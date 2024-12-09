@@ -1,7 +1,7 @@
-import { drizzle } from 'drizzle-orm/node-postgres',
-import { Pool } from 'pg'
-import { dbConfig } from '../config/dbConfig'
-import fs from 'fs'
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
+import { dbConfig } from '../config/dbConfig';
+import fs from 'fs';
 
 const pool = new Pool({
     host: dbConfig.host,
@@ -13,6 +13,6 @@ const pool = new Pool({
         rejectUnauthorized: true,
         ca: fs.readFileSync('/ca.pem').toString()
     }
-})
+});
 
 export const db = drizzle({client:pool})
